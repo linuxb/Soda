@@ -40,7 +40,13 @@ def save_message(msg):
                       + ":" + fmt(current_time.tm_sec.__str__())
   
   msg_id = msg["MsgId"]
-  msg_from = itchat.search_friends(userName=msg['FromUserName'])['NickName']
+  # !fix 群聊情景如果有陌生人发送信息
+  # 群聊中的UserName就是这个群，自动回复回复到群里
+  msg_from = None
+  if itchat.search_friends(userName=msg['FromUserName']) != None:
+    msg_from = itchat.search_friends(userName=msg['FromUserName'])['NickName']
+  else: 
+    msg_from = u"群里的某位伙伴" 
   msg_from_id = msg['FromUserName']
   msg_type = msg['Type']
   msg_time = msg['CreateTime']
