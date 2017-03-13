@@ -93,7 +93,7 @@ def resume_message(msg):
     # 根据id查字典
     old_msg = msg_dict.get(old_msg_id, {})
     # 将撤回信息发送到文件助手
-    msg_holy = u"呵呵," \
+    msg_holy = u"b哥sama, 您的好友" \
       + old_msg.get('msg_from', None) \
       + u"在[" + old_msg.get('format_time') \
       + u"]撤回了消息，内容为: " \
