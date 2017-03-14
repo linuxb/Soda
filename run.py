@@ -1,7 +1,7 @@
 # -*-encoding:utf-8-*-
 import os
 import sys
-sys.path.append(os.path.realpath("./deps/ItChat/"))
+sys.path.append(os.path.realpath("./deps/"))
 import itcor as itchat
 import re
 import shutil
