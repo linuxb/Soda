@@ -2,17 +2,9 @@
 
 ![py27][py27] ![py35][py35]
 
-微信防撤回工具，依赖itchat模块,just for fun
+微信防撤回工具,just for fun
 
-###Usage
-
-先安装itchat
-
-```
-$ pip install itchat
-```
-
-然后启动脚本
+克隆项目到本地，启动脚本即可
 
 ```
 $ python run.py

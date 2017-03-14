@@ -1,11 +1,13 @@
 # -*-encoding:utf-8-*-
 import os
-import itchat
+import sys
+sys.path.append(os.path.realpath("./deps/ItChat/"))
+import itcor as itchat
 import re
 import shutil
 import time
 import traceback
-from itchat.content import *
+from itcor.content import *
 
 msg_dict = {}
 self_info = None
