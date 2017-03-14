@@ -8,6 +8,7 @@ import traceback
 from itchat.content import *
 
 msg_dict = {}
+self_info = None
 
 def fmt(s):
   if int(s) < 10:
@@ -93,7 +94,7 @@ def resume_message(msg):
     # 根据id查字典
     old_msg = msg_dict.get(old_msg_id, {})
     # 将撤回信息发送到文件助手
-    msg_holy = u"b哥sama, 您的好友" \
+    msg_holy = self_info["NickName"] + u"sama, 您的好友" \
       + old_msg.get('msg_from', None) \
       + u"在[" + old_msg.get('format_time') \
       + u"]撤回了消息，内容为: " \
@@ -109,7 +110,7 @@ def resume_message(msg):
         itchat.send_image(old_msg['msg_content'], toUserName=old_msg['msg_from_id'])
         shutil.move(old_msg['msg_content'], r"./cache/")
       elif old_msg['msg_type'] == 'Text':
-        reply_msg = u"呵呵，撤回没用" + old_msg['msg_content']
+        reply_msg = u"呵呵，撤回没用 刚刚说了" + old_msg['msg_content']
         itchat.send(reply_msg, toUserName=old_msg['msg_from_id'])      
       itchat.send(msg_holy, toUserName="filehelper")
     except:
@@ -119,4 +120,5 @@ def resume_message(msg):
   cleanup_message()
 
 itchat.auto_login()
+self_info = itchat.search_friends()
 itchat.run()
